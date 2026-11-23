@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.compose.koinInject
 import tv.own.owntv.R
@@ -106,12 +107,29 @@ private val PixelPower = Color(CorePixelMark.POWER)
  */
 @Composable
 fun Wordmark(width: Dp, modifier: Modifier = Modifier, tv: Color = stageAccent.accent, own: Color = WordmarkCream) {
-    Box(modifier.width(width).height(width * 182f / 988f)) {
-        Image(painterResource(R.drawable.owntv_wordmark_own), null, Modifier.fillMaxSize(), colorFilter = ColorFilter.tint(own))
-        Image(painterResource(R.drawable.owntv_wordmark_tv), null, Modifier.fillMaxSize(), colorFilter = ColorFilter.tint(tv))
+    Row(
+        modifier = modifier.width(width).height(width * 182f / 988f),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(width * 0.035f),
+    ) {
+        androidx.compose.material3.Text(
+            text = "VEXO",
+            color = own,
+            fontSize = (width.value * 0.105f).sp,
+            fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold,
+            letterSpacing = (width.value * 0.006f).sp,
+            maxLines = 1,
+        )
+        androidx.compose.material3.Text(
+            text = "PLAYER",
+            color = tv,
+            fontSize = (width.value * 0.105f).sp,
+            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+            letterSpacing = (width.value * 0.002f).sp,
+            maxLines = 1,
+        )
     }
 }
-
 val WordmarkCream = Color(0xFFFFF6EE)
 
 /**

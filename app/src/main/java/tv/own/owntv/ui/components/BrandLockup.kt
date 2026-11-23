@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.tv.material3.Text
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -111,7 +112,7 @@ fun Wordmark(width: Dp, modifier: Modifier = Modifier, tv: Color = stageAccent.a
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(width * 0.035f),
     ) {
-        androidx.compose.material3.Text(
+        Text(
             text = appName.substringBefore(' '),
             color = own,
             fontSize = (width.value * 0.105f).sp,
@@ -119,7 +120,7 @@ fun Wordmark(width: Dp, modifier: Modifier = Modifier, tv: Color = stageAccent.a
             letterSpacing = (width.value * 0.006f).sp,
             maxLines = 1,
         )
-        androidx.compose.material3.Text(
+        Text(
             text = appName.substringAfter(' '),
             color = tv,
             fontSize = (width.value * 0.105f).sp,

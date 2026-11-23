@@ -153,7 +153,7 @@ fun StageRail(
     nowPlaying: NowPlayingRail?,
     onNowPlaying: () -> Unit,
 ) {
-    val open = (state == RailState.OPEN || state == RailState.PINNED) && size != NavSize.COMPACT
+    val open = true
     val counts = size >= NavSize.WIDE
     val details = size == NavSize.EXTRA_WIDE
     val full = length == NavLength.FULL

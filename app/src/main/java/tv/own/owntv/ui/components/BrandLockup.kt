@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -101,19 +102,17 @@ private val PixelBody = Color(CorePixelMark.BODY)
 private val PixelSide = Color(CorePixelMark.SIDE)
 private val PixelPower = Color(CorePixelMark.POWER)
 
-/**
- * The wordmark: lowercase "own" in cream, "tv" in [tv] (the accent), drawn from
- * core's two vectors at [width]; its height follows the 988 × 182 drawing.
- */
+/** The Vexo Player wordmark, using the app name resource in two accent-colored parts. */
 @Composable
 fun Wordmark(width: Dp, modifier: Modifier = Modifier, tv: Color = stageAccent.accent, own: Color = WordmarkCream) {
+    val appName = stringResource(R.string.app_name)
     Row(
         modifier = modifier.width(width).height(width * 182f / 988f),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(width * 0.035f),
     ) {
         androidx.compose.material3.Text(
-            text = "VEXO",
+            text = appName.substringBefore(' '),
             color = own,
             fontSize = (width.value * 0.105f).sp,
             fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold,
@@ -121,7 +120,7 @@ fun Wordmark(width: Dp, modifier: Modifier = Modifier, tv: Color = stageAccent.a
             maxLines = 1,
         )
         androidx.compose.material3.Text(
-            text = "PLAYER",
+            text = appName.substringAfter(' '),
             color = tv,
             fontSize = (width.value * 0.105f).sp,
             fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
